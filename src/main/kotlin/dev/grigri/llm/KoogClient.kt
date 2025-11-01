@@ -1,7 +1,6 @@
 package dev.grigri.llm
 
 import ai.koog.prompt.dsl.Prompt
-import ai.koog.prompt.executor.clients.openai.OpenAIClientSettings
 import ai.koog.prompt.executor.clients.openai.OpenAILLMClient
 import ai.koog.prompt.executor.llms.SingleLLMPromptExecutor
 import ai.koog.prompt.llm.LLMProvider
