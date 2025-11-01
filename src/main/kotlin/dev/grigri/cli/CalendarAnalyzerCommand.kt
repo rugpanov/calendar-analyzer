@@ -139,6 +139,29 @@ class ShowConfigCommand : CliktCommand(
     }
 }
 
+class SignOutCommand : CliktCommand(
+    name = "signout",
+    help = "Sign out from Google Calendar (removes stored credentials)"
+) {
+    override fun run() {
+        val tokensDir = java.io.File(System.getProperty("user.home"), ".calendar-analyzer/tokens")
+
+        if (!tokensDir.exists()) {
+            echo("Already signed out (no stored credentials found)")
+            return
+        }
+
+        try {
+            tokensDir.deleteRecursively()
+            echo("✓ Successfully signed out from Google Calendar")
+            echo("Next time you run a command, you'll be prompted to sign in again")
+        } catch (e: Exception) {
+            echo("Error signing out: ${e.message}", err = true)
+            throw e
+        }
+    }
+}
+
 class ListEventsCommand : CliktCommand(
     name = "list",
     help = "List all events from Google Calendar"
@@ -173,6 +196,7 @@ fun buildCli() = CalendarAnalyzerCommand()
     .subcommands(
         AnalyzeCommand(),
         ListEventsCommand(),
+        SignOutCommand(),
         ConfigCommand().subcommands(
             ShowConfigCommand(),
             NeverMoveCommand(),

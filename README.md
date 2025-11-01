@@ -75,6 +75,9 @@ chmod +x calendar-analyzer
 ./calendar-analyzer analyze -o  # With AI optimization
 ./calendar-analyzer analyze -s  # Show reschedulable meetings
 
+# Sign out from Google Calendar
+./calendar-analyzer signout
+
 # Configuration
 ./calendar-analyzer config show
 ./calendar-analyzer config never-move -e <event-id>
@@ -117,6 +120,15 @@ Options:
   -o, --optimize        Generate AI optimization suggestions
   -s, --show-reschedulable  Show list of reschedulable meetings
 ```
+
+### Sign Out
+Sign out from Google Calendar to switch accounts.
+
+```bash
+./calendar-analyzer signout
+```
+
+Removes stored OAuth credentials. Next time you run a command, you'll be prompted to sign in with a different account.
 
 ### Configuration
 Manage application settings and meeting restrictions.
