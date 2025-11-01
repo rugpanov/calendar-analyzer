@@ -5,10 +5,7 @@ build/
 !**/src/test/**/build/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -65,3 +62,8 @@ logs/
 *.bak
 *.swp
 *~
+
+### IDE and Build Artifacts ###
+settings.xml
+.claude/
+ai/
