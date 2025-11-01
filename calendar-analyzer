@@ -1,0 +1,24 @@
+#!/bin/bash
+# Calendar Analyzer wrapper script
+
+# Find Java 21
+JAVA_HOME=$(/usr/libexec/java_home -v 21 2>/dev/null)
+
+if [ -z "$JAVA_HOME" ]; then
+    echo "Error: Java 21 is required but not found"
+    echo "Please install Java 21 from: https://adoptium.net/"
+    exit 1
+fi
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+JAR_FILE="$SCRIPT_DIR/build/libs/calendar-analyzer-1.0-SNAPSHOT-all.jar"
+
+if [ ! -f "$JAR_FILE" ]; then
+    echo "Error: JAR file not found at $JAR_FILE"
+    echo "Please run: ./gradlew shadowJar"
+    exit 1
+fi
+
+# Run the application
+"$JAVA_HOME/bin/java" -jar "$JAR_FILE" "$@"
