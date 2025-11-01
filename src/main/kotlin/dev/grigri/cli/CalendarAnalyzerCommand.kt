@@ -26,7 +26,7 @@ class AnalyzeCommand : CliktCommand(
 ) {
     private val timeRange by option("-r", "--range", help = "Time range to analyze")
         .enum<TimeRange>()
-        .default(TimeRange.CURRENT_WEEK)
+        .default(TimeRange.NEXT_WEEK)
 
     private val withOptimization by option("-o", "--optimize", help = "Generate focus time optimization suggestions")
         .flag(default = false)
